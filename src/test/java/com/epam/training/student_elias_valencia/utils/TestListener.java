@@ -1,4 +1,4 @@
-package utils;
+package com.epam.training.student_elias_valencia.utils;
 
 import com.epam.training.student_elias_valencia.driver.DriverSingleton;
 import org.apache.commons.io.FileUtils;
@@ -6,43 +6,28 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
+import org.testng.ITestListener;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class TestListener {
-    private Logger log = LogManager.getRootLogger();
 
-    public void onTestStart(ITestResult iTestResult) {
+public class Log implements ITestListener {
+    private static final Logger log = LogManager.getRootLogger();
 
+    public static void info(String message){
+        log.info(message);
     }
-
-    public void onTestSuccess(ITestResult iTestResult) {
-
+    public static void warn(String message){
+        log.info(message);
     }
-
-    public void onTestFailure(ITestResult iTestResult) {
-        saveScreenshot();
+    public static void error(String message){
+        log.info(message);
     }
-
-    public void onTestSkipped(ITestResult iTestResult) {
-
-    }
-
-    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
-    }
-
-    public void onStart(ITestContext iTestContext) {
-
-    }
-
-    public void onFinish(ITestContext iTestContext) {
-
+    public static void debug(String message){
+        log.info(message);
     }
 
     private void saveScreenshot(){
